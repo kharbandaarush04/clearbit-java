@@ -54,6 +54,21 @@ public class CompanyApi {
     return doReq(STREAMING_URL, params);
   }
 
+  public Company streamingLookupByName(String name) throws ApiException {
+    // verify the required parameters are set
+    if (name == null) {
+      throw new ApiException(
+              400,
+              "Missing the required parameter 'domain' when calling CompanyApi.streamingLookup");
+    }
+
+    // query params
+    List<Pair> params = new ArrayList<Pair>();
+    params.add(new Pair("name", name.toString()));
+
+    return doReq(STREAMING_URL, params);
+  }
+
   /**
    * Company API The Company API lets you lookup company data via a domain name.
    *
